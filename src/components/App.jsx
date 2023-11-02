@@ -2,7 +2,7 @@ import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
 import PopupWithForm from "./PopupWithForm/PopupWithForm.jsx";
-import PopupImage from "./PopupImage/PopupImage.jsx";
+import PopupImage from "./ImagePopup/ImagePopup.jsx";
 import { useState } from "react";
 
 function App() {
@@ -145,7 +145,7 @@ function App() {
           <div className="popup__container">
             <button className="popup__close popup__close_add" type="button" />
             <h2 className="popup__title">Вы уверены?</h2>
-            <form
+            <div
               className="popup__form popup__form_add"
               action="#"
               name="deleteCard"
@@ -157,7 +157,7 @@ function App() {
               <button className="popup__submit" type="submit">
                 Да
               </button>
-            </form>
+            </div>
           </div>
         </section>
       </PopupWithForm>
