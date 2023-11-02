@@ -14,7 +14,7 @@ export default function Main({
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    Promise.all([api.getInfo(), api.getCards()]).then(
+    Promise.all([api.getProfileInfo(), api.getCards()]).then(
       ([dataUser, dataCard]) => {
         setUserName(dataUser.name);
         setUserDescription(dataUser.about);
@@ -52,7 +52,6 @@ export default function Main({
         />
       </section>
       <section className="cards page__cards">
-        {" "}
         {cards.map((data) => {
           return (
             <article className="card" key={data._id}>

@@ -30,13 +30,10 @@ function App() {
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
-  // function handleDelete() {
-  // }
 
   function handleCardClick(card) {
     setSelectedCard(card);
     setImagePopup(true);
-    // setEvantListenerForDocument();
   }
 
   return (
@@ -58,7 +55,6 @@ function App() {
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
       >
-        {" "}
         <label htmlFor="username">
           <input
             id="username"
@@ -94,7 +90,6 @@ function App() {
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
       >
-        {" "}
         <label htmlFor="placeName">
           <input
             name="placeName"
@@ -140,27 +135,11 @@ function App() {
         </label>
       </PopupWithForm>
 
-      <PopupWithForm name="delete" title="Вы уверены?" titleButton="Да">
-        <section className="popup delete-popup">
-          <div className="popup__container">
-            <button className="popup__close popup__close_add" type="button" />
-            <h2 className="popup__title">Вы уверены?</h2>
-            <div
-              className="popup__form popup__form_add"
-              action="#"
-              name="deleteCard"
-              noValidate=""
-            >
-              <label htmlFor="placeLink">
-                <p className="popup__error avatar-error" />
-              </label>
-              <button className="popup__submit" type="submit">
-                Да
-              </button>
-            </div>
-          </div>
-        </section>
-      </PopupWithForm>
+      <PopupWithForm
+        name="delete"
+        title="Вы уверены?"
+        titleButton="Да"
+      ></PopupWithForm>
 
       <PopupImage
         card={selectedCard}

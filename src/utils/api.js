@@ -9,7 +9,7 @@ class Api {
     return res.ok ? res.json() : Promise.reject;
   }
 
-  getInfo() {
+  getProfileInfo() {
     return fetch(`${this._url}/users/me`, {
       headers: {
         authorization: this._authorization,
