@@ -1,30 +1,17 @@
-import { useEffect, useState } from "react";
-import api from "../../utils/api";
+import { useContext } from "react";
+
 import Card from "../Card/Card.jsx";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 export default function Main({
   onEditProfile,
   onAddPlace,
   onEditAvatar,
   onCardClick,
+  onDelete,
+  cards,
 }) {
-  const [userName, setUserName] = useState("");
-  const [userDescription, setUserDescription] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    Promise.all([api.getProfileInfo(), api.getCards()]).then(
-      ([dataUser, dataCard]) => {
-        setUserName(dataUser.name);
-        setUserDescription(dataUser.about);
-        setUserAvatar(dataUser.avatar);
-
-        dataCard.forEach((data) => (data.myid = dataUser._id));
-        setCards(dataCard);
-      }
-    );
-  }, []);
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <main className="content">
@@ -34,11 +21,19 @@ export default function Main({
           className="profile__avatar-overlay"
           onClick={onEditAvatar}
         >
-          <img src={userAvatar} alt="description" className="profile__avatar" />
+          <img
+            src={currentUser.avatar ? currentUser.avatar : "#"}
+            alt="description"
+            className="profile__avatar"
+          />
         </button>
         <div className="profile__info">
-          <h1 className="profile__title">{userName}</h1>
-          <p className="profile__subtitle">{userDescription}</p>
+          <h1 className="profile__title">
+            {currentUser.name ? currentUser.name : ""}
+          </h1>
+          <p className="profile__subtitle">
+            {currentUser.about ? currentUser.about : ""}
+          </p>
           <button
             className="profile__edit-button"
             type="button"
@@ -55,7 +50,7 @@ export default function Main({
         {cards.map((data) => {
           return (
             <article className="card" key={data._id}>
-              <Card card={data} onCardClick={onCardClick} />
+              <Card card={data} onCardClick={onCardClick} onDelete={onDelete} />
             </article>
           );
         })}
