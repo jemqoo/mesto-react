@@ -23,7 +23,7 @@ export default function Main({
         >
           <img
             src={currentUser.avatar ? currentUser.avatar : "#"}
-            alt="description"
+            alt="изображение аватара пользователя"
             className="profile__avatar"
           />
         </button>
@@ -49,9 +49,12 @@ export default function Main({
       <section className="cards page__cards">
         {cards.map((data) => {
           return (
-            <article className="card" key={data._id}>
-              <Card card={data} onCardClick={onCardClick} onDelete={onDelete} />
-            </article>
+            <Card
+              key={data._id}
+              card={data}
+              onCardClick={onCardClick}
+              onDelete={onDelete}
+            />
           );
         })}
       </section>

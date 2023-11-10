@@ -124,53 +124,51 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div>
-        <Header />
+      <Header />
 
-        <Main
-          onEditProfile={handleEditProfileClick}
-          onAddPlace={handleAddPlaceClick}
-          onEditAvatar={handleEditAvatarClick}
-          onCardClick={handleCardClick}
-          onDelete={handleDeletePopupClick}
-          cards={cards}
-        />
+      <Main
+        onEditProfile={handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+        onEditAvatar={handleEditAvatarClick}
+        onCardClick={handleCardClick}
+        onDelete={handleDeletePopupClick}
+        cards={cards}
+      />
 
-        <Footer />
+      <Footer />
 
-        <EditProfilePopup
-          onUpdateUser={handleUpdaterUser}
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-        />
+      <EditProfilePopup
+        onUpdateUser={handleUpdaterUser}
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+      />
 
-        <AddPlacePopup
-          onAddPlace={handleAddPlaceSubmit}
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-        />
+      <AddPlacePopup
+        onAddPlace={handleAddPlaceSubmit}
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
+      />
 
-        <EditAvatarPopup
-          onUpdateAvarar={handleUpdateAvatar}
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-        />
+      <EditAvatarPopup
+        onUpdateAvarar={handleUpdateAvatar}
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
+      />
 
-        <PopupWithForm
-          name="delete"
-          title="Вы уверены?"
-          titleButton="Да"
-          onSubmit={handleDeleteSubmit}
-          isOpen={isDeletePopupOpen}
-          onClose={closeAllPopups}
-        ></PopupWithForm>
+      <PopupWithForm
+        name="delete"
+        title="Вы уверены?"
+        titleButton="Да"
+        onSubmit={handleDeleteSubmit}
+        isOpen={isDeletePopupOpen}
+        onClose={closeAllPopups}
+      ></PopupWithForm>
 
-        <PopupImage
-          card={selectedCard}
-          isOpen={isImagePopup}
-          onClose={closeAllPopups}
-        />
-      </div>
+      <PopupImage
+        card={selectedCard}
+        isOpen={isImagePopup}
+        onClose={closeAllPopups}
+      />
     </CurrentUserContext.Provider>
   );
 }
